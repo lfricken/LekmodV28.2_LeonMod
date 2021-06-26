@@ -1893,8 +1893,18 @@ Events.SerialEventUnitCreated.Add(ChileAdmiralROverride)
 ---------------
 
 -- Notes, do realize that this is coded keeping policy requirements/paths in mind, so if you change any of the policy paths in the future, if anyone besides me is doing policies stuff, DONT FORGET TO CHECK THIS! thnx! ~EAP
-
+	
 -- Italy ua
+
+-- Returns true if this player now has this policy tree completed
+function IsNowComplete(player, newPolicyId, allPolicyIds)
+	for _, policyId in ipairs(allPolicyIds) do
+		if(not player:HasPolicy(policyId) and newPolicyId ~= policyId) then
+			return false; -- they are missing a policy
+		end
+	end
+	return true; -- they have all the policies
+end
 
 local iCiv = GameInfoTypes["CIVILIZATION_ITALY"]
 local bIsActive = JFD_IsCivilisationActive(iCiv)
@@ -1927,6 +1937,11 @@ function Italy_OnPolicyAdopted(playerID, policyID)
 			pCity:SetNumRealBuilding(GameInfoTypes["BUILDING_ITALY_TRAIT_PIETY"], 1);
 		end
 	end 
+
+	local capitalCity = player:GetCapitalCity();
+	if (policyID == GameInfo.Policies["POLICY_ARISTOCRACY"].ID) then
+		capitalCity:SetNumRealBuilding(GameInfoTypes["HAS_POLICY_ARISTOCRACY"], 1); -- CLASS_HAS_POLICY_ARISTOCRACY
+	end
 end
 
 if bIsActive then
