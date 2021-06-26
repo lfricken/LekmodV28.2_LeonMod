@@ -1940,7 +1940,7 @@ function Italy_OnPolicyAdopted(playerID, policyID)
 
 	local capitalCity = player:GetCapitalCity();
 	if (policyID == GameInfo.Policies["POLICY_ARISTOCRACY"].ID) then
-		capitalCity:SetNumRealBuilding(GameInfoTypes["HAS_POLICY_ARISTOCRACY"], 1); -- CLASS_HAS_POLICY_ARISTOCRACY
+		capitalCity:SetNumRealBuilding(GameInfoTypes["HAS_POLICY_ARISTOCRACY"], 1);
 	end
 end
 GameEvents.PlayerAdoptPolicy.Add(Italy_OnPolicyAdopted);
