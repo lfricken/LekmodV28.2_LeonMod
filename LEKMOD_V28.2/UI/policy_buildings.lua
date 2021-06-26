@@ -262,8 +262,8 @@ function CheckCanConstruct(playerID, buildingTypeID)
 	local canBuild = true;
 
 	canBuild = canBuild and (
-		HasRequiredPolicy(ply, bID, "BUILDING_GREAT_FIREWALL", "POLICY_PHILANTHROPY") or
-		HasRequiredPolicy(ply, bID, "BUILDING_GREAT_FIREWALL", "POLICY_PHILANTHROPY")	);
+		HasRequiredPolicy(ply, bID, "BUILDING_GREAT_FIREWALL", "POLICY_ORDER_OPENER") or
+		HasRequiredPolicy(ply, bID, "BUILDING_GREAT_FIREWALL", "POLICY_AUTOCRACY_OPENER"));
 
 	return canBuild;
 end
