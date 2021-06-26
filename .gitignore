@@ -1,0 +1,18 @@
+
+# ignore all
+*
+# not sure why this is needed for next part, but it is
+!*/
+
+# allow these exact files:
+!.gitignore
+!/LEKMOD_V28.2/Override/CIV5Units.xml
+!/LEKMOD_V28.2/UI/policy_buildings.lua
+!/LEKMOD_V28.2/UI/CityBannerManager.lua
+
+
+
+
+
+
+
