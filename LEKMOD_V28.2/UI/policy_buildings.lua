@@ -240,14 +240,34 @@ function OnPolicyAdopted(playerID, policyID)
 	local capitalCity = player:GetCapitalCity();
 
 
-	if (policyID == GameInfo.Policies["POLICY_ARISTOCRACY"].ID) then
-		capitalCity:SetNumRealBuilding(GameInfoTypes["HAS_POLICY_ARISTOCRACY"], 1);
-	end
-	if (policyID == GameInfo.Policies["POLICY_ARISTOCRACY"].ID) then
-		capitalCity:SetNumRealBuilding(GameInfoTypes["HAS_POLICY_ARISTOCRACY"], 1);
+	-- todo add order
+	if (player:HasPolicy(GameInfo.Policies["POLICY_BRANCH_AUTOCRACY"].ID)) then
+		capitalCity:SetNumRealBuilding(GameInfoTypes["CAN_BUILD_FIREWALL"], 1);
 	end
 end
 GameEvents.PlayerAdoptPolicy.Add(OnPolicyAdopted);
+
+
+function HasRequiredPolicy(player, buildingID, buildingName, policyName)
+	if (buildingID == GameInfo.Buildings[buildingName].ID and 
+		not player:HasPolicy(GameInfo.Policies[policyName].ID)) then
+		return false;
+	end
+	return true;
+end
+-- additional building restrictions
+function CheckCanConstruct(playerID, buildingTypeID)
+	local ply = Players[playerID];
+	local bID = buildingTypeID;
+	local canBuild = true;
+
+	canBuild = canBuild and (
+		HasRequiredPolicy(ply, bID, "BUILDING_GREAT_FIREWALL", "POLICY_PHILANTHROPY") or
+		HasRequiredPolicy(ply, bID, "BUILDING_GREAT_FIREWALL", "POLICY_PHILANTHROPY")	);
+
+	return canBuild;
+end
+GameEvents.PlayerCanConstruct.Add(CheckCanConstruct);
 
 --[[
 
