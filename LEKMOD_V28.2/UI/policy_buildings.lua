@@ -232,7 +232,7 @@ end
  228984: 			<Type>POLICY_DUMMY_LEXICO</Type> 
  229144: 			<Type>POLICY_DUMMY_VIETNAM</Type> 
  229304: 			<Type>POLICY_DUMMY_CUBA</Type> 
-]]
+]] -- FEATURE_ARARAT_MOUNTAIN
 
 
 function OnPolicyAdopted(playerID, policyID)
@@ -261,9 +261,20 @@ function CheckCanConstruct(playerID, buildingTypeID)
 	local bID = buildingTypeID;
 	local canBuild = true;
 
-	canBuild = canBuild and (
+-- Oracle
+	canBuild = canBuild and (HasRequiredPolicy(ply, bID, "BUILDING_ORACLE", "POLICY_ARISTOCRACY"));
+-- Great Wall
+	canBuild = canBuild and (HasRequiredPolicy(ply, bID, "BUILDING_GREAT_WALL", "POLICY_CITIZENSHIP"));
+-- Terracotta Army
+	canBuild = canBuild and (HasRequiredPolicy(ply, bID, "BUILDING_TERRACOTTA_ARMY", "POLICY_WARRIOR_CODE"));
+-- Great Fire Wall
+	canBuild = canBuild and ( -- Great Wall
 		HasRequiredPolicy(ply, bID, "BUILDING_GREAT_FIREWALL", "POLICY_ORDER_OPENER") or
 		HasRequiredPolicy(ply, bID, "BUILDING_GREAT_FIREWALL", "POLICY_AUTOCRACY_OPENER"));
+-- Sydney Opera House
+	canBuild = canBuild and (HasRequiredPolicy(ply, bID, "BUILDING_SYDNEY_OPERA_HOUSE", "POLICY_FLOURISHING_OF_ARTS"));
+-- Panama Canal
+	canBuild = canBuild and (HasRequiredPolicy(ply, bID, "BUILDING_PANAMA", "POLICY_ENTREPRENEURSHIP"));
 
 	return canBuild;
 end
