@@ -1,4 +1,4 @@
-#Leon Mod
+# Leon Mod
 A CIV V mod starting with Lekmod V28.2. Requires all DLC.
 * [Lekmod v28.2](https://docs.google.com/document/d/1-i_9E7hD_56WwNgj7LzrkbX7tCuNmud3AVyONijydWs/edit)
 * [DLL Code Here](https://github.com/lfricken/nqmod-vs2008)
@@ -8,7 +8,7 @@ A CIV V mod starting with Lekmod V28.2. Requires all DLC.
 
 
 
-#TODO:
+# TODO:
 Create [Lekmod v28.2](https://docs.google.com/document/d/1-i_9E7hD_56WwNgj7LzrkbX7tCuNmud3AVyONijydWs/edit) Mirror
 Create vs2008 iso files and patch Mirror
 
