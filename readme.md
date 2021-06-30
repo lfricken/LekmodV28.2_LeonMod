@@ -13,25 +13,20 @@ Create [Lekmod v28.2](https://docs.google.com/document/d/1-i_9E7hD_56WwNgj7Lzrkb
 Create vs2008 iso files and patch Mirror
 
 
+you can detect isthmuses via tile types by looping over adjacents and detecting # of changes
+Smaller deposits of iron, horses, oil, add randomness
+Add smooth benefits to tourism
 HELICOPTERS and SUBMARINES should be bad vs eachother
 Most Natural wonders kinda suck
-Increase atoll frequency
-Move hanging garden down
-Move pyramids down
-Move temple of Artemis down
 Move louve to low aesthetics
 Move uffizi down
 Move porcelain tower down and buff a bit
-Increase sea lux frequency
+Increase sea lux frequency near islands
+civ 5 minor civ priorities
 Piety boost?
-Pentagon insta units instead of upgrade reduction
+Pentagon insta units with upgrade reduction
 Nuclear missile less damage, cheaper, less pop damage
-Smaller deposits of iron, horses, oil
-Autocracy less scaling happiness, more immediate happiness or split happiness over more buildings, like walls
-Less happiness for exploration harbors etc.
-Add happiness scalars for money and culture policy trees.
 
-Remove Pantheon 1 food per camp?
 
 
 
