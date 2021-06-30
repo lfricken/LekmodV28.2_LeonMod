@@ -12,7 +12,7 @@ A CIV V mod starting with Lekmod V28.2. Requires all DLC.
 Create [Lekmod v28.2](https://docs.google.com/document/d/1-i_9E7hD_56WwNgj7LzrkbX7tCuNmud3AVyONijydWs/edit) Mirror
 Create vs2008 iso files and patch Mirror
 
-
+ -- Uran, Horse, Oil,   Iron, Coal, Alum
 you can detect isthmuses via tile types by looping over adjacents and detecting # of changes
 Smaller deposits of iron, horses, oil, add randomness
 Add smooth benefits to tourism
@@ -40,4 +40,33 @@ Embed other data like so: {TEXT_KEY}
 [ICON_CULTURE]
 [ICON_TOURISM]
 [ICON_PRODUCTION]
+
+
+
+2.75 - 3 - 0.25
+2.00 - 2 - 1
+1.25 - 1 - 0.25
+
+
+function random(center, range)
+
+rounded = math.floor(0.5 + val);
+getResourceAmount
+PlaceSpecificNumberOfResources
+
+SetResourceType
+
+
+elseif resourceType == "RESOURCE_IRON" then
+	self.iron_ID = resourceID;
+elseif resourceType == "RESOURCE_HORSE" then
+	self.horse_ID = resourceID;
+elseif resourceType == "RESOURCE_COAL" then
+	self.coal_ID = resourceID;
+elseif resourceType == "RESOURCE_OIL" then
+	self.oil_ID = resourceID;
+elseif resourceType == "RESOURCE_ALUMINUM" then
+	self.aluminum_ID = resourceID;
+elseif resourceType == "RESOURCE_URANIUM" then
+	self.uranium_ID = resourceID;
 
