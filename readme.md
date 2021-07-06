@@ -26,6 +26,7 @@ D:\SteamLibrary\steamapps\common\Sid Meier's Civilization V\Assets\DLC\LEKMOD_V2
 iModifier = theirUnit:GetUnhappinessCombatPenalty();
 
 
+TXT_KEY_BUILDING_GOVERNORS_MANSION_DESC
 
 island gen avoid colliding with other land masses with below algorithm - you can detect isthmuses via tile types by looping over adjacents and detecting # of changes
 HELICOPTERS and SUBMARINES should be bad vs eachother
