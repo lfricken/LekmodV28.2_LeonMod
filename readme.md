@@ -17,9 +17,17 @@ Create vs2008 iso files and patch Mirror
  canal maint
 the colloseum and zoo require a horse
 
-Add smooth benefits to tourism
-island gen avoid colliding with other land masses with below algorithm 
-you can detect isthmuses via tile types by looping over adjacents and detecting # of changes
+buff naval melee
+Add smooth benefits to tourism - GetInfluenceTradeRouteScienceBonus (unit strength bonus as 
+Unit Strength +(min(100, tourismDifference) / 2)% )
+See GetUnhappinessCombatPenalty
+
+D:\SteamLibrary\steamapps\common\Sid Meier's Civilization V\Assets\DLC\LEKMOD_V28.2\Mods\No Quitters Mod (v 11)\ui\EnemyUnitPanel.lua:
+iModifier = theirUnit:GetUnhappinessCombatPenalty();
+
+
+
+island gen avoid colliding with other land masses with below algorithm - you can detect isthmuses via tile types by looping over adjacents and detecting # of changes
 HELICOPTERS and SUBMARINES should be bad vs eachother
 Most Natural wonders kinda suck
 Move louve to low aesthetics
@@ -38,6 +46,11 @@ Sub 100% bonus vs ranged
 Subs and Destroyers <-- for sea domination
 Battleships, Carrier, Embarked <-- For attacking land
 
+Destroyers are better than subs in that:
+they can take cities
+they can defend friendly units against air
+they can see subs at a distance
+
 # Useful Info
 Embed other data like so: {TEXT_KEY}
 
@@ -47,10 +60,10 @@ Embed other data like so: {TEXT_KEY}
 [ICON_RESEARCH]
 [ICON_CULTURE]
 [ICON_TOURISM]
-[ICON_PRODUCTION]
+[ICON_PRODUCTION]PROMOTION_NO_CITY_ATTACK
 
 
-
+Epic.Access.Referrals.ReferralLookup.Web.ReferralContext
 2.75 - 3 - 0.25
 2.00 - 2 - 1
 1.25 - 1 - 0.25
