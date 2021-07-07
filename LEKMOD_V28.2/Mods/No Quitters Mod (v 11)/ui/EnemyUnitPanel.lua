@@ -582,7 +582,7 @@ function UpdateCombatOddsUnitVsCity(pMyUnit, pCity)
 			end
 
 			-- Tourism
-			iModifier = pMyUnit:GetTourismCombatPenalty();
+			iModifier = pMyUnit:GetTourismCombatPenalty(iTheirPlayer);
 			if (iModifier ~= 0) then
 				controlTable = g_MyCombatDataIM:GetInstance();
 				controlTable.Text:LocalizeAndSetText("TXT_KEY_EUPANEL_EMPIRE_INFLUENCED_PENALTY");
@@ -1054,7 +1054,7 @@ function UpdateCombatOddsUnitVsUnit(pMyUnit, pTheirUnit)
 			end
 
 			-- Tourism
-			iModifier = pMyUnit:GetTourismCombatPenalty();
+			iModifier = pMyUnit:GetTourismCombatPenalty(iTheirPlayer);
 			if (iModifier ~= 0) then
 				controlTable = g_MyCombatDataIM:GetInstance();
 				controlTable.Text:LocalizeAndSetText("TXT_KEY_EUPANEL_EMPIRE_INFLUENCED_PENALTY");
@@ -1337,7 +1337,7 @@ function UpdateCombatOddsUnitVsUnit(pMyUnit, pTheirUnit)
 				end
 
 				-- Tourism
-				iModifier = pTheirUnit:GetTourismCombatPenalty();
+				iModifier = pTheirUnit:GetTourismCombatPenalty(iMyPlayer);
 				if (iModifier ~= 0) then
 					controlTable = g_TheirCombatDataIM:GetInstance();
 					controlTable.Text:LocalizeAndSetText("TXT_KEY_EUPANEL_EMPIRE_INFLUENCED_PENALTY");
@@ -1825,7 +1825,7 @@ function UpdateCombatOddsCityVsUnit(myCity, theirUnit)
 		end
 
 		-- Tourism
-		iModifier = theirUnit:GetTourismCombatPenalty();
+		iModifier = theirUnit:GetTourismCombatPenalty(myPlayerID);
 		if (iModifier ~= 0) then
 			controlTable = g_TheirCombatDataIM:GetInstance();
 			controlTable.Text:LocalizeAndSetText("TXT_KEY_EUPANEL_EMPIRE_INFLUENCED_PENALTY");

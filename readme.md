@@ -17,13 +17,34 @@ Create vs2008 iso files and patch Mirror
  canal maint
 the colloseum and zoo require a horse
 
-buff naval melee
+buff other naval melee
 Add smooth benefits to tourism - GetInfluenceTradeRouteScienceBonus (unit strength bonus as 
 Unit Strength +(min(100, tourismDifference) / 2)% )
 See GetUnhappinessCombatPenalty
 
 D:\SteamLibrary\steamapps\common\Sid Meier's Civilization V\Assets\DLC\LEKMOD_V28.2\Mods\No Quitters Mod (v 11)\ui\EnemyUnitPanel.lua:
 iModifier = theirUnit:GetUnhappinessCombatPenalty();
+
+
+
+
+
+Add global xml to adjust tourism combat
+tourism happiness
+great firewall dll changes
+great lighthouse shuld give gold per feature
+3 gpt for mausoleum
+spearman bowmen catapult
+panama canal 3 gpt -1 culture per tile
+Petra +1 gold per tile
+8 science porcelain tower, +5 culture
+move porcelain tower down
+red for 6 culture
+harbor and seaport 
+salt and marble for
+revert honor
+700 health cities
+make sure strength scales
 
 
 TXT_KEY_BUILDING_GOVERNORS_MANSION_DESC
