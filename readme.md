@@ -27,8 +27,20 @@ iModifier = theirUnit:GetUnhappinessCombatPenalty();
 
 
 
+cities start with 12 strength, increase with 0.5 pop, do 20 damage
 
 
+move governors mansion exploration benefits to Expansionist policy tree, rename governors mansion
+
+
+
+Stele, or occasionally stela when derived from Latin, is a stone or wooden slab, generally taller than it is wide, erected in the ancient world as a monument. The surface of the stele often has text, ornamentation, or both. These may be inscribed, carved in relief, or painted. Stelae were created for many reasons. Grave stelae were used for funerary or commemorative purposes. Stelae as slabs of stone would also be used as ancient Greek and Roman government notices or as boundary markers to mark borders or property lines.
+
+ironclad takes iron not coal
+Battleship and Carrier description
+zoo require horses
+tourism combat bonus doesn't work yet
+naval units should be able to heal outside friendly territory
 Add global xml to adjust tourism combat
 tourism happiness
 great firewall dll changes
@@ -39,12 +51,77 @@ panama canal 3 gpt -1 culture per tile
 Petra +1 gold per tile
 8 science porcelain tower, +5 culture
 move porcelain tower down
-red for 6 culture
-harbor and seaport 
+red fort 6 culture
 salt and marble for
 revert honor
-700 health cities
-make sure strength scales
+800 health cities
+defense buildings need to add more health
+make sure city strength scales appropriately
+National Epic 2 culture
+
+Honor
+Revert
+
+
+Liberty
+Settler +1+1 in Liberty-Collective Rule.
+City Hall starts in opener.
+City Hall +1 Gold in Opener
+City Hall +1 Happiness Representation
+City Hall +1 science Liberty Finisher
+Meritocracy Palace +4 Happiness at palace
+Remove Happiness Colleseum bonus
+
+
+Windmill
+Workshop
+Iron Works
+
+Production Bonuses
+Science Bonuses
+
+Exploration > renamve Urbanization
+Opener:	
+	+10% when constructing buildings
+
+Naval Tradition:
+	+2 science per Forge, Windmill, workshop, or Factory
+
+Maritime Infrastructure:
+	+2 prod per mountain, +2 prod per city, +15% prod in capital
+	
+Colonialism:
+	Strategic and Bonus Resources +1 Production
+
+Navigation School:
+	+1 prod per Sea
+
+Treasure Fleets:
+	
+
+Finisher: 
+	+1 Gold per sea
+	30% for Gold/Science production
+
+
+Louvre to public
+Decrease culture policy cost by 20%
+
+Cultural Centers
+	+1 culture from each as well
+
+
+Worlds fair 50 rather than 66%.
+
+commerce internal to 50%
+25 instead of 20 gold purchase price reduction
+
+
+
+
+City Hall - An inscribed stone at the center of a city, declaring the common law that citizens of a large empire must obey and cooperate under.
+
+
 
 
 TXT_KEY_BUILDING_GOVERNORS_MANSION_DESC
