@@ -35,17 +35,23 @@ move governors mansion exploration benefits to Expansionist policy tree, rename 
 
 
 Stele, or occasionally stela when derived from Latin, is a stone or wooden slab, generally taller than it is wide, erected in the ancient world as a monument. The surface of the stele often has text, ornamentation, or both. These may be inscribed, carved in relief, or painted. Stelae were created for many reasons. Grave stelae were used for funerary or commemorative purposes. Stelae as slabs of stone would also be used as ancient Greek and Roman government notices or as boundary markers to mark borders or property lines.
+BUILDING_STADE
+Trireme
 
+TOURISM_COMBAT_MAX
+TOURISM_COMBAT_DIVISOR
+MAX_CITY_HIT_POINTS_AI_BONUS
+test tourism combat
+test ai city health
 ironclad takes iron not coal
 Battleship and Carrier description
 zoo require horses
-tourism combat bonus doesn't work yet
-naval units should be able to heal outside friendly territory
 Add global xml to adjust tourism combat
-tourism happiness
 great firewall dll changes
-great lighthouse shuld give gold per feature
+stade horse requirement, remove culture and gold changes
+great lighthouse shuld give gold per tile
 3 gpt for mausoleum
+
 spearman bowmen catapult
 panama canal 3 gpt -1 culture per tile
 Petra +1 gold per tile
@@ -59,9 +65,7 @@ defense buildings need to add more health
 make sure city strength scales appropriately
 National Epic 2 culture
 
-Honor
-Revert
-
+Revert Honor
 
 Liberty
 Settler +1+1 in Liberty-Collective Rule.
@@ -121,6 +125,22 @@ commerce internal to 50%
 
 City Hall - An inscribed stone at the center of a city, declaring the common law that citizens of a large empire must obey and cooperate under.
 
+		<Row> 
+			<PromotionType>PROMOTION_FASTER_HEAL</PromotionType> 
+			<UnitCombatType>UNITCOMBAT_SUBMARINE</UnitCombatType> 
+		</Row>
+		<Row> 
+			<PromotionType>PROMOTION_FASTER_HEAL</PromotionType> 
+			<UnitCombatType>UNITCOMBAT_CARRIER</UnitCombatType> 
+		</Row>
+		<Row> 
+			<PromotionType>PROMOTION_FASTER_HEAL</PromotionType> 
+			<UnitCombatType>UNITCOMBAT_NAVALRANGED</UnitCombatType> 
+		</Row>
+		<Row> 
+			<PromotionType>PROMOTION_FASTER_HEAL</PromotionType> 
+			<UnitCombatType>UNITCOMBAT_NAVALMELEE</UnitCombatType> 
+		</Row>
 
 
 
