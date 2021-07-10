@@ -58,8 +58,16 @@ remove logistics (multiple attacks promotion)
 improve air sweep description
 improve evasion description
 improve interception description
-
+new air mechanics
+interceptor damage modifier
+interceptor damage modifier xml INTERCEPTION_DAMAGE_MULTIPLIER GC.getTOURISM_COMBAT_MAX();
+stealth bomber use oil
+bomber use aluminum
+double check missile evasion Requires 1 [ICON_RES_ALUMINUM] Aluminum.[NEWLINE]
 spearman bowmen catapult
+
+remove no intercept for self restriction
+figure out GetInterceptionDamage
 panama canal 3 gpt -1 culture per tile
 Petra +1 gold per tile
 8 science porcelain tower, +5 culture
