@@ -77,18 +77,16 @@ make sure city strength scales appropriately
 Revert Honor
 revert honor
 National Epic 2 culture
-
-
+--
 Liberty
-Remove Happiness Colleseum bonus
+Remove Happiness Colloseum bonus
 Settler +1+1 in Liberty-Collective Rule.
 Meritocracy Palace +4 Happiness at palace
 City Hall +1 Happiness Representation
 City Hall +1 science Liberty Finisher
 City Hall +1 Gold in Opener
-
 City Hall starts in opener.
-
+--
 
 Windmill
 Workshop
