@@ -51,6 +51,13 @@ great firewall dll changes
 stade horse requirement, remove culture and gold changes
 great lighthouse shuld give gold per tile
 3 gpt for mausoleum
+800 health cities
+evasion 50 > 40
+evasion 100 > 75
+remove logistics (multiple attacks promotion)
+improve air sweep description
+improve evasion description
+improve interception description
 
 spearman bowmen catapult
 panama canal 3 gpt -1 culture per tile
@@ -60,7 +67,6 @@ move porcelain tower down
 red fort 6 culture
 salt and marble for
 revert honor
-800 health cities
 defense buildings need to add more health
 make sure city strength scales appropriately
 National Epic 2 culture
