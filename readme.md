@@ -60,35 +60,34 @@ improve evasion description
 improve interception description
 new air mechanics
 interceptor damage modifier
-interceptor damage modifier xml INTERCEPTION_DAMAGE_MULTIPLIER GC.getTOURISM_COMBAT_MAX();
+interceptor damage modifier xml
 stealth bomber use oil
 bomber use aluminum
 double check missile evasion Requires 1 [ICON_RES_ALUMINUM] Aluminum.[NEWLINE]
 spearman bowmen catapult
-
 remove no intercept for self restriction
 figure out GetInterceptionDamage
+salt and marble for Rock Formation
 panama canal 3 gpt -1 culture per tile
 Petra +1 gold per tile
 8 science porcelain tower, +5 culture
 move porcelain tower down
 red fort 6 culture
-salt and marble for
-revert honor
-defense buildings need to add more health
 make sure city strength scales appropriately
+Revert Honor
+revert honor
 National Epic 2 culture
 
-Revert Honor
 
 Liberty
+Remove Happiness Colleseum bonus
 Settler +1+1 in Liberty-Collective Rule.
-City Hall starts in opener.
-City Hall +1 Gold in Opener
+Meritocracy Palace +4 Happiness at palace
 City Hall +1 Happiness Representation
 City Hall +1 science Liberty Finisher
-Meritocracy Palace +4 Happiness at palace
-Remove Happiness Colleseum bonus
+City Hall +1 Gold in Opener
+
+City Hall starts in opener.
 
 
 Windmill
@@ -156,9 +155,26 @@ City Hall - An inscribed stone at the center of a city, declaring the common law
 			<UnitCombatType>UNITCOMBAT_NAVALMELEE</UnitCombatType> 
 		</Row>
 
-
-
+defense buildings need to add more health
 TXT_KEY_BUILDING_GOVERNORS_MANSION_DESC
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 island gen avoid colliding with other land masses with below algorithm - you can detect isthmuses via tile types by looping over adjacents and detecting # of changes
 HELICOPTERS and SUBMARINES should be bad vs eachother
