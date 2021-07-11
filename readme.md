@@ -45,6 +45,7 @@ issues:
 	AI health bonuses
 
 	Urbanization lua code not working
+	rename traits to make sense
 
 
 

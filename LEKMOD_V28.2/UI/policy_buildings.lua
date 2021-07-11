@@ -248,17 +248,21 @@ function PolicyGrantsFreeBuilding(GameEvents, policyName, buildingName, includeE
 	-- Add to existing cities
 	if (includeExistingCities) then
 		local onPolicyAdopted = function (playerID, policyID)
+			print("policy adopt called");
+			local player = Players[playerID];
 			if (policyID == GameInfo.Policies[policyName].ID) then
 				for loopCity in player:Cities() do
 					loopCity:SetNumRealBuilding(GameInfoTypes[buildingName], 1);
 				end
 			end
+			print("policy adopt called2");
 		end
 		GameEvents.PlayerAdoptPolicy.Add(onPolicyAdopted);
 	end
 	-- Add to new cities
 	if (includeNewCities) then
 		local onCityFounded = function (iPlayer, iCityX, iCityY)
+			print("city found called");
 			local player = Players[iPlayer]
 			if (player:HasPolicy(GameInfo.Policies[policyName].ID)) then
 				for loopCity in player:Cities() do
@@ -267,14 +271,15 @@ function PolicyGrantsFreeBuilding(GameEvents, policyName, buildingName, includeE
 					end
 				end
 			end
+			print("city found called2");
 		end
 		GameEvents.PlayerCityFounded.Add(onCityFounded);
 	end
 end
 
+PolicyGrantsFreeBuilding(GameEvents, "POLICY_EXPLORATION", "BUILDING_POLICY_BONUS_PRODUCTION", true, true);
 PolicyGrantsFreeBuilding(GameEvents, "POLICY_LIBERTY", "BUILDING_GOVERNORS_MANSION", false, true);
 
-PolicyGrantsFreeBuilding(GameEvents, "POLICY_EXPLORATION", "BUILDING_POLICY_BONUS_PRODUCTION");
 PolicyGrantsFreeBuilding(GameEvents, "POLICY_MERCHANT_NAVY", "BUILDING_POLICY_BONUS_RESOURCES_PRODUCTION");
 PolicyGrantsFreeBuilding(GameEvents, "POLICY_MARITIME_INFRASTRUCTURE", "BUILDING_POLICY_BONUS_MOUNTAIN_PRODUCTION");
 
