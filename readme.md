@@ -87,51 +87,50 @@ City Hall +1 science Liberty Finisher
 City Hall +1 Gold in Opener
 City Hall starts in opener.
 --
-Exploration > rename Urbanization
-Treasure Fleets:
-	Iron Works +5 prod, 4 culture, 2 gold
+
+Windmill
+Workshop
+Iron Works
+
+Production Bonuses
+Science Bonuses
+
+Exploration > renamve Urbanization
 Opener:	
-	+10% when constructing buildings --
-Finisher: 
-	+1 Gold per sea
-	Earn Great admiralls
+	+10% when constructing buildings
+
+Naval Tradition:
+	+2 science per Forge, Windmill, workshop, or Factory
 
 Maritime Infrastructure:
-	+2 prod per mountain, +2 prod per city, +15% prod in capital	-- POLICY_MARITIME_INFRASTRUCTURE BUILDING_POLICY_BONUS_MOUNTAIN_PRODUCTION
+	+2 prod per mountain, +2 prod per city, +15% prod in capital
+	
 Colonialism:
 	Strategic and Bonus Resources +1 Production
+
 Navigation School:
 	+1 prod per Sea
-Naval Tradition:
-	+2 science per Forge, Windmill, workshop
+
+Treasure Fleets:
 	
-RESOURCE_STONE
-RESOURCE_RUBBER
-RESOURCE_HARDWOOD
-RESOURCE_WHEAT
 
-RESOURCE_MAIZE
-RESOURCE_COW
-RESOURCE_FISH
-RESOURCE_DEER
-RESOURCE_BISON
-RESOURCE_SHEEP
-RESOURCE_BANANA
+Finisher: 
+	+1 Gold per sea
+	30% for Gold/Science production
 
-RESOURCE_HORSE
-RESOURCE_URANIUM
-RESOURCE_IRON
-RESOURCE_OIL
-RESOURCE_ALUMINUM
 
-remove great war bomber recon
-policies glitched
-missile high evasion
 Louvre to public
 Decrease culture policy cost by 20%
+
+Cultural Centers
+	+1 culture from each as well
+
+
 Worlds fair 50 rather than 66%.
+
 commerce internal to 50%
 25 instead of 20 gold purchase price reduction
+
 
 
 
