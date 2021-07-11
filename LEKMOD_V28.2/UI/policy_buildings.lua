@@ -234,7 +234,17 @@ end
  229304: 			<Type>POLICY_DUMMY_CUBA</Type> 
 ]] -- FEATURE_ARARAT_MOUNTAIN
 
+function default(current, auto)
+    if current == nil then 
+    	return auto;
+    else 
+    	return current;
+    end
+end
+
 function PolicyGrantsFreeBuilding(GameEvents, policyName, buildingName, includeExistingCities, includeNewCities)
+	includeExistingCities = default(includeExistingCities, true);
+	includeNewCities = default(includeNewCities, true);
 	-- Add to existing cities
 	if (includeExistingCities) then
 		local onPolicyAdopted = function (playerID, policyID)
@@ -264,9 +274,9 @@ end
 
 PolicyGrantsFreeBuilding(GameEvents, "POLICY_LIBERTY", "BUILDING_GOVERNORS_MANSION", false, true);
 
-PolicyGrantsFreeBuilding(GameEvents, "POLICY_EXPLORATION", "BUILDING_POLICY_BONUS_PRODUCTION", true, true);
-PolicyGrantsFreeBuilding(GameEvents, "POLICY_MERCHANT_NAVY", "BUILDING_POLICY_BONUS_RESOURCES_PRODUCTION", true, true);
-PolicyGrantsFreeBuilding(GameEvents, "POLICY_MARITIME_INFRASTRUCTURE", "BUILDING_POLICY_BONUS_MOUNTAIN_PRODUCTION", true, true);
+PolicyGrantsFreeBuilding(GameEvents, "POLICY_EXPLORATION", "BUILDING_POLICY_BONUS_PRODUCTION");
+PolicyGrantsFreeBuilding(GameEvents, "POLICY_MERCHANT_NAVY", "BUILDING_POLICY_BONUS_RESOURCES_PRODUCTION");
+PolicyGrantsFreeBuilding(GameEvents, "POLICY_MARITIME_INFRASTRUCTURE", "BUILDING_POLICY_BONUS_MOUNTAIN_PRODUCTION");
 
 --[[
 function OnPolicyAdopted(playerID, policyID)
