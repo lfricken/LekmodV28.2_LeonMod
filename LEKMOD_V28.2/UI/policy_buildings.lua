@@ -234,7 +234,51 @@ end
  229304: 			<Type>POLICY_DUMMY_CUBA</Type> 
 ]] -- FEATURE_ARARAT_MOUNTAIN
 
+function default(current, auto)
+    if current == nil then 
+    	return auto;
+    else 
+    	return current;
+    end
+end
 
+function PolicyGrantsFreeBuilding(GameEvents, policyName, buildingName, includeExistingCities, includeNewCities)
+	includeExistingCities = default(includeExistingCities, true);
+	includeNewCities = default(includeNewCities, true);
+	-- Add to existing cities
+	if (includeExistingCities) then
+		local onPolicyAdopted = function (playerID, policyID)
+			if (policyID == GameInfo.Policies[policyName].ID) then
+				for loopCity in player:Cities() do
+					loopCity:SetNumRealBuilding(GameInfoTypes[buildingName], 1);
+				end
+			end
+		end
+		GameEvents.PlayerAdoptPolicy.Add(onPolicyAdopted);
+	end
+	-- Add to new cities
+	if (includeNewCities) then
+		local onCityFounded = function (iPlayer, iCityX, iCityY)
+			local player = Players[iPlayer]
+			if (player:HasPolicy(GameInfo.Policies[policyName].ID)) then
+				for loopCity in player:Cities() do
+					if (loopCity:GetX() == iCityX and loopCity:GetY() == iCityY) then
+						loopCity:SetNumRealBuilding(GameInfoTypes[buildingName], 1);
+					end
+				end
+			end
+		end
+		GameEvents.PlayerCityFounded.Add(onCityFounded);
+	end
+end
+
+PolicyGrantsFreeBuilding(GameEvents, "POLICY_LIBERTY", "BUILDING_GOVERNORS_MANSION", false, true);
+
+PolicyGrantsFreeBuilding(GameEvents, "POLICY_EXPLORATION", "BUILDING_POLICY_BONUS_PRODUCTION");
+PolicyGrantsFreeBuilding(GameEvents, "POLICY_MERCHANT_NAVY", "BUILDING_POLICY_BONUS_RESOURCES_PRODUCTION");
+PolicyGrantsFreeBuilding(GameEvents, "POLICY_MARITIME_INFRASTRUCTURE", "BUILDING_POLICY_BONUS_MOUNTAIN_PRODUCTION");
+
+--[[
 function OnPolicyAdopted(playerID, policyID)
 	local player = Players[playerID];
 	local capitalCity = player:GetCapitalCity();
@@ -243,11 +287,41 @@ function OnPolicyAdopted(playerID, policyID)
 	-- todo add order
 	if (player:HasPolicy(GameInfo.Policies["POLICY_BRANCH_AUTOCRACY"].ID)) then
 		capitalCity:SetNumRealBuilding(GameInfoTypes["CAN_BUILD_FIREWALL"], 1);
+	-- Autocracy and Order can build the Great Firewall
+	if (policyID == GameInfo.Policies["POLICY_BRANCH_AUTOCRACY"].ID or policyID == GameInfo.Policies["POLICY_BRANCH_ORDER"].ID) then
+		for loopCity in player:Cities() do
+			loopCity:SetNumRealBuilding(GameInfoTypes["CAN_BUILD_FIREWALL"], 1);
+		end
+	end
+	-- Exploration gets city bonuses
+	if (policyID == GameInfo.Policies["POLICY_EXPLORATION_OPENER"].ID) then
+		for loopCity in player:Cities() do
+			loopCity:SetNumRealBuilding(GameInfoTypes["BUILDING_GOVERNORS_MANSION"], 1)
+		end
 	end
 end
 GameEvents.PlayerAdoptPolicy.Add(OnPolicyAdopted);
+function OnCityFounded(iPlayer, iCityX, iCityY)
+	local player = Players[iPlayer]
+	if (player:HasPolicy(GameInfo.Policies["POLICY_LIBERTY"].ID)) then
+		for loopCity in player:Cities() do
+			if (loopCity:GetX() == iCityX and loopCity:GetY() == iCityY) then
+				loopCity:SetNumRealBuilding(GameInfoTypes["BUILDING_GOVERNORS_MANSION"], 1)
+			end
+		end
+	end
+end
+GameEvents.PlayerCityFounded.Add(OnCityFounded)
+]]--
 
 
+function AddBuilding(player, buildingID, buildingName, policyName)
+	if (buildingID == GameInfo.Buildings[buildingName].ID and 
+		not player:HasPolicy(GameInfo.Policies[policyName].ID)) then
+		return false;
+	end
+	return true;
+end
 function HasRequiredPolicy(player, buildingID, buildingName, policyName)
 	if (buildingID == GameInfo.Buildings[buildingName].ID and 
 		not player:HasPolicy(GameInfo.Policies[policyName].ID)) then
