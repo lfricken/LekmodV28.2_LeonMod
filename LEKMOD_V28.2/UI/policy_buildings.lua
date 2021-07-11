@@ -242,46 +242,67 @@ function default(current, auto)
     end
 end
 
-function PolicyGrantsFreeBuilding(GameEvents, policyName, buildingName, includeExistingCities, includeNewCities)
-	includeExistingCities = default(includeExistingCities, true);
-	includeNewCities = default(includeNewCities, true);
+function PolicyGrantsFreeBuilding(GameEvents, policyName, buildingName, includeExistingCities, includeNewCities, isBranch)
+	local isBranch = default(isBranch, false);
 	-- Add to existing cities
 	if (includeExistingCities) then
 		local onPolicyAdopted = function (playerID, policyID)
-			print("policy adopt called");
+			--print("onPolicyAdopted called with policy name: "..policyName.."and id: "..policyID);
 			local player = Players[playerID];
-			if (policyID == GameInfo.Policies[policyName].ID) then
+
+			-- check if correct policy
+			local match = false;
+			if (isBranch) then 
+				match = policyID == GameInfo.PolicyBranchTypes[policyName].ID;
+			else
+				match = policyID == GameInfo.Policies[policyName].ID;
+			end
+
+			if (match) then
 				for loopCity in player:Cities() do
 					loopCity:SetNumRealBuilding(GameInfoTypes[buildingName], 1);
 				end
 			end
-			print("policy adopt called2");
 		end
-		GameEvents.PlayerAdoptPolicy.Add(onPolicyAdopted);
+		-- add to events
+		if (isBranch) then
+			GameEvents.PlayerAdoptPolicyBranch.Add(onPolicyAdopted);
+		else
+			GameEvents.PlayerAdoptPolicy.Add(onPolicyAdopted);
+		end
 	end
 	-- Add to new cities
 	if (includeNewCities) then
 		local onCityFounded = function (iPlayer, iCityX, iCityY)
-			print("city found called");
+			--print("onCityFounded called with policy name: "..policyName.."and id: "..policyID);
 			local player = Players[iPlayer]
-			if (player:HasPolicy(GameInfo.Policies[policyName].ID)) then
+
+			-- check if correct policy
+			local match = false;
+			if (isBranch) then 
+				match = player:IsPolicyBranchUnlocked(GameInfo.PolicyBranchTypes[policyName].ID);
+			else
+				match = player:HasPolicy(GameInfo.Policies[policyName].ID);
+			end
+			
+			if (match) then
 				for loopCity in player:Cities() do
 					if (loopCity:GetX() == iCityX and loopCity:GetY() == iCityY) then
 						loopCity:SetNumRealBuilding(GameInfoTypes[buildingName], 1);
 					end
 				end
 			end
-			print("city found called2");
 		end
 		GameEvents.PlayerCityFounded.Add(onCityFounded);
 	end
 end
 
-PolicyGrantsFreeBuilding(GameEvents, "POLICY_EXPLORATION", "BUILDING_POLICY_BONUS_PRODUCTION", true, true);
-PolicyGrantsFreeBuilding(GameEvents, "POLICY_LIBERTY", "BUILDING_GOVERNORS_MANSION", false, true);
+--print("adding callbacks");
+PolicyGrantsFreeBuilding(GameEvents, "POLICY_BRANCH_EXPLORATION", "BUILDING_POLICY_BONUS_PRODUCTION", true, true, true);
+PolicyGrantsFreeBuilding(GameEvents, "POLICY_BRANCH_LIBERTY", "BUILDING_GOVERNORS_MANSION", false, true, true);
 
-PolicyGrantsFreeBuilding(GameEvents, "POLICY_MERCHANT_NAVY", "BUILDING_POLICY_BONUS_RESOURCES_PRODUCTION");
-PolicyGrantsFreeBuilding(GameEvents, "POLICY_MARITIME_INFRASTRUCTURE", "BUILDING_POLICY_BONUS_MOUNTAIN_PRODUCTION");
+PolicyGrantsFreeBuilding(GameEvents, "POLICY_MERCHANT_NAVY", "BUILDING_POLICY_BONUS_RESOURCES_PRODUCTION", true, true);
+PolicyGrantsFreeBuilding(GameEvents, "POLICY_MARITIME_INFRASTRUCTURE", "BUILDING_POLICY_BONUS_MOUNTAIN_PRODUCTION", true, true);
 
 --[[
 function OnPolicyAdopted(playerID, policyID)

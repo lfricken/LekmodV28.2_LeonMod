@@ -46,6 +46,7 @@ issues:
 
 	Urbanization lua code not working
 	rename traits to make sense
+	fix city hall help text
 
 
 
