@@ -44,6 +44,9 @@ issues:
 	remove building health
 	AI health bonuses
 
+	Urbanization lua code not working
+
+
 
 
 TOURISM_COMBAT_MAX
