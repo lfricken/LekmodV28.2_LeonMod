@@ -38,6 +38,14 @@ Stele, or occasionally stela when derived from Latin, is a stone or wooden slab,
 BUILDING_STADE
 Trireme
 
+
+issues:
+	glitched free windmills
+	remove building health
+	AI health bonuses
+
+
+
 TOURISM_COMBAT_MAX
 TOURISM_COMBAT_DIVISOR
 MAX_CITY_HIT_POINTS_AI_BONUS
