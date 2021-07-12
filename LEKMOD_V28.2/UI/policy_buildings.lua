@@ -286,17 +286,17 @@ function PolicyGrantsFreeBuilding(GameEvents, policyName, buildingName, includeE
 	-- Add to new cities
 	if (includeNewCities) then
 		local onCityFounded = function (iPlayer, iCityX, iCityY)
-			print("onCityFounded called with policy name: "..policyName);
+			--print("onCityFounded called with policy name: "..policyName);
 			local player = Players[iPlayer]
 
 			-- check if correct policy
 			local match = false;
 			if (isBranch and not requiresWholeBranch) then 
 				match = player:IsPolicyBranchUnlocked(GameInfo.PolicyBranchTypes[policyName].ID);
-				print("onCityFounded IsPolicyBranchUnlocked with policy name: "..policyName.."   "..tostring(match));
+				--print("onCityFounded IsPolicyBranchUnlocked with policy name: "..policyName.."   "..tostring(match));
 			elseif (isBranch and requiresWholeBranch) then
 				match = player:IsPolicyBranchFinished(GameInfo.PolicyBranchTypes[policyName].ID);
-				print("onCityFounded IsPolicyBranchFinished with policy name: "..policyName.."   "..tostring(match));
+				--print("onCityFounded IsPolicyBranchFinished with policy name: "..policyName.."   "..tostring(match));
 			else
 				match = player:HasPolicy(GameInfo.Policies[policyName].ID);
 			end
@@ -416,6 +416,9 @@ function CheckCanConstruct(playerID, buildingTypeID)
 	canBuild = canBuild and (HasRequiredPolicy(ply, bID, "BUILDING_POLICY_BONUS_MOUNTAIN_PRODUCTION", "POLICY_MARITIME_INFRASTRUCTURE"));
 	canBuild = canBuild and (HasRequiredPolicy(ply, bID, "BUILDING_POLICY_BONUS_SEA_PRODUCTION", "POLICY_NAVIGATION_SCHOOL"));
 	canBuild = canBuild and (HasRequiredPolicyBranchComplete(ply, bID, "BUILDING_POLICY_BONUS_SEA_GOLD", "POLICY_BRANCH_EXPLORATION"));
+
+	canBuild = canBuild and (HasRequiredPolicy(ply, bID, "BUILDING_UFFIZI", "POLICY_CULTURAL_CENTERS"));
+	canBuild = canBuild and (HasRequiredPolicy(ply, bID, "BUILDING_PORCELAIN_TOWER", "POLICY_HUMANISM"));
 
 	return canBuild;
 end
