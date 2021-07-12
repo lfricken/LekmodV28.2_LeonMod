@@ -146,22 +146,22 @@ commerce internal to 50%
 
 City Hall - An inscribed stone at the center of a city, declaring the common law that citizens of a large empire must obey and cooperate under.
 
-		<Row> 
-			<PromotionType>PROMOTION_FASTER_HEAL</PromotionType> 
-			<UnitCombatType>UNITCOMBAT_SUBMARINE</UnitCombatType> 
-		</Row>
-		<Row> 
-			<PromotionType>PROMOTION_FASTER_HEAL</PromotionType> 
-			<UnitCombatType>UNITCOMBAT_CARRIER</UnitCombatType> 
-		</Row>
-		<Row> 
-			<PromotionType>PROMOTION_FASTER_HEAL</PromotionType> 
-			<UnitCombatType>UNITCOMBAT_NAVALRANGED</UnitCombatType> 
-		</Row>
-		<Row> 
-			<PromotionType>PROMOTION_FASTER_HEAL</PromotionType> 
-			<UnitCombatType>UNITCOMBAT_NAVALMELEE</UnitCombatType> 
-		</Row>
+<Row> 
+	<PromotionType>PROMOTION_FASTER_HEAL</PromotionType> 
+	<UnitCombatType>UNITCOMBAT_SUBMARINE</UnitCombatType> 
+</Row>
+<Row> 
+	<PromotionType>PROMOTION_FASTER_HEAL</PromotionType> 
+	<UnitCombatType>UNITCOMBAT_CARRIER</UnitCombatType> 
+</Row>
+<Row> 
+	<PromotionType>PROMOTION_FASTER_HEAL</PromotionType> 
+	<UnitCombatType>UNITCOMBAT_NAVALRANGED</UnitCombatType> 
+</Row>
+<Row> 
+	<PromotionType>PROMOTION_FASTER_HEAL</PromotionType> 
+	<UnitCombatType>UNITCOMBAT_NAVALMELEE</UnitCombatType> 
+</Row>
 
 defense buildings need to add more health
 TXT_KEY_BUILDING_GOVERNORS_MANSION_DESC
