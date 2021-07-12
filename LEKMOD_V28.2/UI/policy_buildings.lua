@@ -367,6 +367,20 @@ function HasRequiredPolicy(player, buildingID, buildingName, policyName)
 	end
 	return true;
 end
+function HasRequiredPolicyBranch(player, buildingID, buildingName, branchName)
+	if (buildingID == GameInfo.Buildings[buildingName].ID and 
+		not player:IsPolicyBranchUnlocked(GameInfo.PolicyBranchTypes[branchName].ID)) then
+		return false;
+	end
+	return true;
+end
+function HasRequiredPolicyBranchComplete(player, buildingID, buildingName, branchName)
+	if (buildingID == GameInfo.Buildings[buildingName].ID and 
+		not player:IsPolicyBranchFinished(GameInfo.PolicyBranchTypes[branchName].ID)) then
+		return false;
+	end
+	return true;
+end
 -- additional building restrictions
 function CheckCanConstruct(playerID, buildingTypeID)
 	local ply = Players[playerID];
@@ -387,6 +401,13 @@ function CheckCanConstruct(playerID, buildingTypeID)
 	canBuild = canBuild and (HasRequiredPolicy(ply, bID, "BUILDING_SYDNEY_OPERA_HOUSE", "POLICY_FLOURISHING_OF_ARTS"));
 -- Panama Canal
 	canBuild = canBuild and (HasRequiredPolicy(ply, bID, "BUILDING_PANAMA", "POLICY_ENTREPRENEURSHIP"));
+
+-- Urbanization tree buildings
+	canBuild = canBuild and (HasRequiredPolicyBranch(ply, bID, "BUILDING_POLICY_BONUS_PRODUCTION", "POLICY_BRANCH_EXPLORATION"));
+	canBuild = canBuild and (HasRequiredPolicy(ply, bID, "BUILDING_POLICY_BONUS_RESOURCES_PRODUCTION", "POLICY_MERCHANT_NAVY"));
+	canBuild = canBuild and (HasRequiredPolicy(ply, bID, "BUILDING_POLICY_BONUS_MOUNTAIN_PRODUCTION", "POLICY_MARITIME_INFRASTRUCTURE"));
+	canBuild = canBuild and (HasRequiredPolicy(ply, bID, "BUILDING_POLICY_BONUS_SEA_PRODUCTION", "POLICY_NAVIGATION_SCHOOL"));
+	canBuild = canBuild and (HasRequiredPolicyBranchComplete(ply, bID, "BUILDING_POLICY_BONUS_SEA_GOLD", "POLICY_BRANCH_EXPLORATION"));
 
 	return canBuild;
 end
