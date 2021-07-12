@@ -246,7 +246,7 @@ function PolicyGrantsFreeBuilding(GameEvents, policyName, buildingName, includeE
 	includeExistingCities = default(includeExistingCities, true);
 	includeNewCities = default(includeNewCities, true);
 	isBranch = default(isBranch, false);
-	requiresWholeBranch = default(isBranch, false);
+	requiresWholeBranch = default(requiresWholeBranch, false);
 	-- Add to existing cities
 	if (includeExistingCities) then
 		local onPolicyAdopted = function (playerID, policyID)
@@ -272,25 +272,31 @@ function PolicyGrantsFreeBuilding(GameEvents, policyName, buildingName, includeE
 				end
 			end
 		end
+		--print("RequiresWhole Branch?: "..tostring(requiresWholeBranch));
+		--print("isBranch?: "..tostring(isBranch));
 		-- add to events
 		if (isBranch and not requiresWholeBranch) then
+			--print("onPolicyAdopted listening for branch "..policyName);
 			GameEvents.PlayerAdoptPolicyBranch.Add(onPolicyAdopted);
 		else -- if requiresWholeBranch is true, we'll get called on a normal policy adoption
+			--print("onPolicyAdopted listening for policy "..policyName);
 			GameEvents.PlayerAdoptPolicy.Add(onPolicyAdopted);
 		end
 	end
 	-- Add to new cities
 	if (includeNewCities) then
 		local onCityFounded = function (iPlayer, iCityX, iCityY)
-			--print("onCityFounded called with policy name: "..policyName.."and id: "..policyID);
+			print("onCityFounded called with policy name: "..policyName);
 			local player = Players[iPlayer]
 
 			-- check if correct policy
 			local match = false;
 			if (isBranch and not requiresWholeBranch) then 
 				match = player:IsPolicyBranchUnlocked(GameInfo.PolicyBranchTypes[policyName].ID);
+				print("onCityFounded IsPolicyBranchUnlocked with policy name: "..policyName.."   "..tostring(match));
 			elseif (isBranch and requiresWholeBranch) then
 				match = player:IsPolicyBranchFinished(GameInfo.PolicyBranchTypes[policyName].ID);
+				print("onCityFounded IsPolicyBranchFinished with policy name: "..policyName.."   "..tostring(match));
 			else
 				match = player:HasPolicy(GameInfo.Policies[policyName].ID);
 			end
@@ -310,7 +316,7 @@ end
 --print("adding callbacks");
 PolicyGrantsFreeBuilding(GameEvents, "POLICY_BRANCH_LIBERTY", "BUILDING_GOVERNORS_MANSION", false, true, true);
 
-PolicyGrantsFreeBuilding(GameEvents, "POLICY_BRANCH_EXPLORATION", "BUILDING_POLICY_BONUS_PRODUCTION", true, true, true); -- opener
+PolicyGrantsFreeBuilding(GameEvents, "POLICY_BRANCH_EXPLORATION", "BUILDING_POLICY_BONUS_PRODUCTION", true, true, true, false); -- opener
 PolicyGrantsFreeBuilding(GameEvents, "POLICY_MERCHANT_NAVY", "BUILDING_POLICY_BONUS_RESOURCES_PRODUCTION");
 PolicyGrantsFreeBuilding(GameEvents, "POLICY_MARITIME_INFRASTRUCTURE", "BUILDING_POLICY_BONUS_MOUNTAIN_PRODUCTION");
 PolicyGrantsFreeBuilding(GameEvents, "POLICY_NAVIGATION_SCHOOL", "BUILDING_POLICY_BONUS_SEA_PRODUCTION");
@@ -350,7 +356,7 @@ function OnCityFounded(iPlayer, iCityX, iCityY)
 	end
 end
 GameEvents.PlayerCityFounded.Add(OnCityFounded)
-]]--
+--]]
 
 
 function AddBuilding(player, buildingID, buildingName, policyName)
@@ -367,6 +373,7 @@ function HasRequiredPolicy(player, buildingID, buildingName, policyName)
 	end
 	return true;
 end
+
 function HasRequiredPolicyBranch(player, buildingID, buildingName, branchName)
 	if (buildingID == GameInfo.Buildings[buildingName].ID and 
 		not player:IsPolicyBranchUnlocked(GameInfo.PolicyBranchTypes[branchName].ID)) then
@@ -381,6 +388,7 @@ function HasRequiredPolicyBranchComplete(player, buildingID, buildingName, branc
 	end
 	return true;
 end
+
 -- additional building restrictions
 function CheckCanConstruct(playerID, buildingTypeID)
 	local ply = Players[playerID];
