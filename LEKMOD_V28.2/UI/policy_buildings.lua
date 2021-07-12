@@ -309,7 +309,7 @@ function PolicyGrantsFreeBuilding(GameEvents, policyName, buildingName, includeE
 				end
 			end
 		end
-		GameEvents.PlayerCityFounded.Add(onCityFounded);
+		GameEvents.PlayerCityFounded.Add(onCityFounded); -- TODO CityCaptureComplete
 	end
 end
 

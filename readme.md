@@ -40,7 +40,69 @@ Trireme
 
 
 issues:
-	policy not granting building
+	max out internet defense
+	GetNotifications()->Add
+	ai investment, see if(sGift.iGoldAmount > 0 && iGoldLeft >= (iGoldReserve / 2))
+		which eventually calls DoGoldGiftFromMajor
+
+
+	make priorities, then draw straws and Z draft, with placeholders for humans
+	once conflicts are handled the same way 
+
+
+	Have AI identify player with most city states, and then divvy up taking that player down
+	matrix 
+
+		At beginning of game, Use flavor, distance, etc. to get a matrix with some amount of randomness added. Draw straws to divvy up this many CS: floor(#AI * (#CS/#civs)). We'll go through and for the selected civ, boost their favorite 
+
+	Static Preference Matrix that gets scaled so each player divies up the CSs to be highest on 2 each (actually, not 2, but 
+
+		for each civ turn, use GPT, Current Influence, and # CS Allies as percent of total to multiply and get a
+		So if a civ has a bunch of city states, it will be devalued
+
+	Dynamic Preference Matrix
+
+		Use preference Matrix to make purchases, where we compare our preferences to others, and make gifts to those we have the highest relative preference until we are allies, then move on to second highest preference
+
+
+4 city states and 2 civs
+  1 2 3 4 5 6 7 8
+1 4 3 2 1
+2 1 2 3 4
+
+while some remain, divy up
+12
+  12
+    12
+Pick on next guy if none remaining, preferencing his lower priority one first
+1243
+  12
+    12
+ ...
+1243
+  1243
+    12
+ ...
+1243
+  1243
+43  12
+ ...
+124365
+  1243
+43  12
+ ...
+124365
+651243
+43  12
+ ...
+124365
+651243
+436512
+
+ 1 2 3
+ 3 1 2
+ 2 3 1
+
 
 BUILDING_POLICY_BONUS_SEA_PRODUCTION
 
