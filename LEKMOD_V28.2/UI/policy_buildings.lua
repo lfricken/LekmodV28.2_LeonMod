@@ -242,8 +242,11 @@ function default(current, auto)
     end
 end
 
-function PolicyGrantsFreeBuilding(GameEvents, policyName, buildingName, includeExistingCities, includeNewCities, isBranch)
-	local isBranch = default(isBranch, false);
+function PolicyGrantsFreeBuilding(GameEvents, policyName, buildingName, includeExistingCities, includeNewCities, isBranch, requiresWholeBranch)
+	includeExistingCities = default(includeExistingCities, true);
+	includeNewCities = default(includeNewCities, true);
+	isBranch = default(isBranch, false);
+	requiresWholeBranch = default(isBranch, false);
 	-- Add to existing cities
 	if (includeExistingCities) then
 		local onPolicyAdopted = function (playerID, policyID)
@@ -252,12 +255,17 @@ function PolicyGrantsFreeBuilding(GameEvents, policyName, buildingName, includeE
 
 			-- check if correct policy
 			local match = false;
-			if (isBranch) then 
+			if (isBranch and not requiresWholeBranch) then 
 				match = policyID == GameInfo.PolicyBranchTypes[policyName].ID;
+				--print("1matched?: "..match);
+			elseif (isBranch and requiresWholeBranch) then
+				local willBeComplete = player:WillFinishReturnedBranchIfAdopted(policyID);
+				match = willBeComplete == GameInfo.PolicyBranchTypes[policyName].ID;
+				--print("2matched?: "..willBeComplete);
 			else
 				match = policyID == GameInfo.Policies[policyName].ID;
+				--print("3matched?: "..match);
 			end
-
 			if (match) then
 				for loopCity in player:Cities() do
 					loopCity:SetNumRealBuilding(GameInfoTypes[buildingName], 1);
@@ -265,9 +273,9 @@ function PolicyGrantsFreeBuilding(GameEvents, policyName, buildingName, includeE
 			end
 		end
 		-- add to events
-		if (isBranch) then
+		if (isBranch and not requiresWholeBranch) then
 			GameEvents.PlayerAdoptPolicyBranch.Add(onPolicyAdopted);
-		else
+		else -- if requiresWholeBranch is true, we'll get called on a normal policy adoption
 			GameEvents.PlayerAdoptPolicy.Add(onPolicyAdopted);
 		end
 	end
@@ -279,8 +287,10 @@ function PolicyGrantsFreeBuilding(GameEvents, policyName, buildingName, includeE
 
 			-- check if correct policy
 			local match = false;
-			if (isBranch) then 
+			if (isBranch and not requiresWholeBranch) then 
 				match = player:IsPolicyBranchUnlocked(GameInfo.PolicyBranchTypes[policyName].ID);
+			elseif (isBranch and requiresWholeBranch) then
+				match = player:IsPolicyBranchFinished(GameInfo.PolicyBranchTypes[policyName].ID);
 			else
 				match = player:HasPolicy(GameInfo.Policies[policyName].ID);
 			end
@@ -298,11 +308,13 @@ function PolicyGrantsFreeBuilding(GameEvents, policyName, buildingName, includeE
 end
 
 --print("adding callbacks");
-PolicyGrantsFreeBuilding(GameEvents, "POLICY_BRANCH_EXPLORATION", "BUILDING_POLICY_BONUS_PRODUCTION", true, true, true);
 PolicyGrantsFreeBuilding(GameEvents, "POLICY_BRANCH_LIBERTY", "BUILDING_GOVERNORS_MANSION", false, true, true);
 
-PolicyGrantsFreeBuilding(GameEvents, "POLICY_MERCHANT_NAVY", "BUILDING_POLICY_BONUS_RESOURCES_PRODUCTION", true, true);
-PolicyGrantsFreeBuilding(GameEvents, "POLICY_MARITIME_INFRASTRUCTURE", "BUILDING_POLICY_BONUS_MOUNTAIN_PRODUCTION", true, true);
+PolicyGrantsFreeBuilding(GameEvents, "POLICY_BRANCH_EXPLORATION", "BUILDING_POLICY_BONUS_PRODUCTION", true, true, true); -- opener
+PolicyGrantsFreeBuilding(GameEvents, "POLICY_MERCHANT_NAVY", "BUILDING_POLICY_BONUS_RESOURCES_PRODUCTION");
+PolicyGrantsFreeBuilding(GameEvents, "POLICY_MARITIME_INFRASTRUCTURE", "BUILDING_POLICY_BONUS_MOUNTAIN_PRODUCTION");
+PolicyGrantsFreeBuilding(GameEvents, "POLICY_NAVIGATION_SCHOOL", "BUILDING_POLICY_BONUS_SEA_PRODUCTION");
+PolicyGrantsFreeBuilding(GameEvents, "POLICY_BRANCH_EXPLORATION", "BUILDING_POLICY_BONUS_SEA_GOLD", true, true, true, true); -- closer
 
 --[[
 function OnPolicyAdopted(playerID, policyID)

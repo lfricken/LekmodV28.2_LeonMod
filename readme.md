@@ -40,15 +40,9 @@ Trireme
 
 
 issues:
-	glitched free windmills
-	remove building health
-	AI health bonuses
+	policy not granting building
 
-	Urbanization lua code not working
-	rename traits to make sense
-	fix city hall help text
-
-
+BUILDING_POLICY_BONUS_SEA_PRODUCTION
 
 
 TOURISM_COMBAT_MAX
